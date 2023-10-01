@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="h-full ">
+      <main className="h-full bg-customGrey-100">
         <div className="mx-auto h-full border-customGrey-60 md:w-[48rem] md:border-x">
           <div className="contact-list-container mx-6 pt-3">
             {contactList?.map((contact, i) => (
