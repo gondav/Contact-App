@@ -6,3 +6,7 @@ export const findAllContacts = async (select?: Prisma.ContactSelect) => {
     select,
   })) as Contact[];
 };
+
+export const deleteContact = async (where: Prisma.ContactWhereUniqueInput) => {
+  return await prisma.contact.delete({ where });
+};
