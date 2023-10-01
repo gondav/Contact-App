@@ -11,7 +11,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <meta name="description" content="This is a contact application" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 };
