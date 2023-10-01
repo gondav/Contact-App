@@ -1,0 +1,67 @@
+@import "./fonts.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  font-family: "Glysa", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  letter-spacing: 0;
+  color: #fff;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+h2 {
+  font-family: "Glysa", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-family: "LexendDeca", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01;
+  color: #fff;
+}
+
+p,
+.body {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01;
+  color: #fff;
+}
+
+.message {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.01;
+  color: #ffffff8c;
+}
+
+button {
+  @apply bg-customGrey-60 border-customGrey-50;
+
+  &:hover {
+    @apply bg-customGrey-50 border-customGrey-50;
+  }
+
+  &:active {
+    @apply bg-customGrey-40 border-customGrey-50;
+  }
+}
+
