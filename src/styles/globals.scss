@@ -65,3 +65,14 @@ button {
   }
 }
 
+.modal {
+  @apply bg-customGrey-80 rounded-lg;
+  transform: translate(calc(0), calc(100% - 16px));
+  z-index: 2;
+
+  @media screen and (min-width: 1280px){
+    transform: translate(calc(100% - 24px), calc(100% - 16px));
+
+  }
+}
+
