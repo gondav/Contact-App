@@ -16,3 +16,13 @@ export const createContact = async (input: Prisma.ContactCreateInput) => {
     data: input,
   })) as Contact;
 };
+
+export const updateContact = async (
+  contactId: number,
+  input: Prisma.ContactUpdateInput,
+) => {
+  return (await prisma.contact.update({
+    where: { id: contactId },
+    data: input,
+  })) as Contact;
+};
