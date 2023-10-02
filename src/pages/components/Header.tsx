@@ -27,7 +27,7 @@ const Header = () => {
                   src={profilePicSrc.src}
                   alt="Profile picture"
                 />
-                <button className="flex items-center rounded-3xl bg-customGrey-60 px-3 py-2">
+                <button className="btn-prio flex items-center rounded-3xl bg-customGrey-60 px-3 py-2">
                   <img className=" md:mr-3" src={addSrc.src} alt="Add" />
                   <span className="hidden text-white md:block">Add new</span>
                 </button>
