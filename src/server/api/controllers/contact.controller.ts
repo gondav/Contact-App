@@ -3,8 +3,13 @@ import {
   createContact,
   deleteContact,
   findAllContacts,
+  updateContact,
 } from "../services/contact.service";
-import { CreateContactInput, ParamsInput } from "../schemas/contact.schema";
+import {
+  CreateContactInput,
+  ParamsInput,
+  UpdateContactInput,
+} from "../schemas/contact.schema";
 
 export const getContactsHandler = async () => {
   try {
@@ -68,6 +73,34 @@ export const createContactHandler = async ({
     return {
       status: "success",
       data: newContact,
+    };
+  } catch (err: any) {
+    throw err;
+  }
+};
+
+export const updateContactHandler = async ({
+  paramsInput,
+  input,
+}: {
+  paramsInput: ParamsInput;
+  input: UpdateContactInput;
+}) => {
+  try {
+    const contactId = +paramsInput.contactId;
+
+    const updatedContact = await updateContact(contactId, input.body);
+    if (!updatedContact) {
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: "Contact with that ID not found",
+      });
+    }
+    return {
+      status: "success",
+      data: {
+        updatedContact,
+      },
     };
   } catch (err: any) {
     throw err;
