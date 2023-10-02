@@ -53,26 +53,48 @@ p,
   color: #ffffff8c;
 }
 
-button {
-  @apply bg-customGrey-60 border-customGrey-50;
+.btn-prio {
+  @apply border-customGrey-50 bg-customGrey-60;
 
   &:hover {
-    @apply bg-customGrey-50 border-customGrey-50;
+    @apply border-customGrey-50 bg-customGrey-50;
   }
 
   &:active {
-    @apply bg-customGrey-40 border-customGrey-50;
+    @apply border-customGrey-50 bg-customGrey-40;
+  }
+}
+
+.btn-primary {
+  @apply bg-customGrey-60;
+
+  &:hover {
+    @apply bg-customGrey-50;
+  }
+
+  &:active {
+    @apply bg-customGrey-40;
+  }
+}
+
+.btn-secondary {
+  @apply bg-customGrey-100;
+
+  &:hover {
+    @apply bg-customGrey-90;
+  }
+
+  &:active {
+    @apply bg-customGrey-80;
   }
 }
 
 .modal {
-  @apply bg-customGrey-80 rounded-lg;
-  transform: translate(calc(0), calc(100% - 16px));
+  @apply rounded-lg bg-customGrey-80;
+  transform: translate(0, calc(100%));
   z-index: 2;
 
-  @media screen and (min-width: 1280px){
-    transform: translate(calc(100% - 24px), calc(100% - 16px));
-
+  @media screen and (min-width: 1280px) {
+    transform: translate(calc(100% - 40px), calc(100% - 8px));
   }
 }
-
