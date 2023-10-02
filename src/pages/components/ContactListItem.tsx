@@ -2,6 +2,7 @@ import muteSrc from "../../icons/mute.png";
 import callSrc from "../../icons/call.png";
 import moreSrc from "../../icons/more.png";
 import Modal from "./Modal";
+import DefaultButton from "./DefaultButton";
 import { useState } from "react";
 import { api } from "~/utils/api";
 
@@ -61,15 +62,12 @@ const ContactListItem = ({ contact, onRemove }: ContactListItemProps) => {
           <p className="message">{phoneNumber ?? ""}</p>
         </div>
       </div>
-      <div className="contact-right  flex items-center gap-x-2 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <img className="h-5 w-5" src={muteSrc.src} alt="Mute" />
-
-        <img className="h-5 w-5" src={callSrc.src} alt="Call" />
-
-        <img
-          className="h-5 w-5 cursor-pointer"
-          src={moreSrc.src}
-          alt="More"
+      <div className="contact-right  flex items-center  opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <DefaultButton iconSrc={muteSrc.src} className="btn-secondary" />
+        <DefaultButton iconSrc={callSrc.src} className="btn-secondary" />
+        <DefaultButton
+          iconSrc={moreSrc.src}
+          className="btn-secondary"
           onClick={toggleModal}
         />
       </div>
