@@ -10,3 +10,9 @@ export const findAllContacts = async (select?: Prisma.ContactSelect) => {
 export const deleteContact = async (where: Prisma.ContactWhereUniqueInput) => {
   return await prisma.contact.delete({ where });
 };
+
+export const createContact = async (input: Prisma.ContactCreateInput) => {
+  return (await prisma.contact.create({
+    data: input,
+  })) as Contact;
+};
