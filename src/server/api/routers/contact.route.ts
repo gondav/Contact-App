@@ -2,8 +2,9 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import {
   deleteContactHandler,
   getContactsHandler,
+  createContactHandler,
 } from "../controllers/contact.controller";
-import { params } from "../schemas/contact.schema";
+import { createContactSchema, params } from "../schemas/contact.schema";
 
 const contactRouter = createTRPCRouter({
   getAll: publicProcedure.query(async () => {
@@ -13,6 +14,9 @@ const contactRouter = createTRPCRouter({
   delete: publicProcedure
     .input(params)
     .mutation(({ input }) => deleteContactHandler({ paramsInput: input })),
+  create: publicProcedure
+    .input(createContactSchema)
+    .mutation(({ input }) => createContactHandler({ input })),
 });
 
 export default contactRouter;
