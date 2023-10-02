@@ -3,8 +3,13 @@ import {
   deleteContactHandler,
   getContactsHandler,
   createContactHandler,
+  updateContactHandler,
 } from "../controllers/contact.controller";
-import { createContactSchema, params } from "../schemas/contact.schema";
+import {
+  createContactSchema,
+  params,
+  updateContactSchema,
+} from "../schemas/contact.schema";
 
 const contactRouter = createTRPCRouter({
   getAll: publicProcedure.query(async () => {
@@ -17,6 +22,12 @@ const contactRouter = createTRPCRouter({
   create: publicProcedure
     .input(createContactSchema)
     .mutation(({ input }) => createContactHandler({ input })),
+  update: publicProcedure.input(updateContactSchema).mutation(({ input }) =>
+    updateContactHandler({
+      paramsInput: input.params,
+      input,
+    }),
+  ),
 });
 
 export default contactRouter;
