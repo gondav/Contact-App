@@ -3,6 +3,7 @@ import callSrc from "../../icons/call.png";
 import moreSrc from "../../icons/more.png";
 import Modal from "./Modal";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 interface Contact {
   id: number;
@@ -14,9 +15,10 @@ interface Contact {
 
 interface ContactListItemProps {
   contact: Contact;
+  onRemove: () => void;
 }
 
-const ContactListItem = ({ contact }: ContactListItemProps) => {
+const ContactListItem = ({ contact, onRemove }: ContactListItemProps) => {
   const { name, phoneNumber, imageUrl } = contact || {};
   const defaultImageSrc =
     "https://ux-contact-profile-pictures.s3.eu-north-1.amazonaws.com/Default.png";
@@ -25,6 +27,25 @@ const ContactListItem = ({ contact }: ContactListItemProps) => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const deleteContactMutation = api.contact.delete.useMutation();
+
+  const handleRemoveContact = () => {
+    toggleModal();
+    deleteContactMutation.mutate(
+      {
+        contactId: contact.id.toString(),
+      },
+      {
+        onSuccess: () => {
+          onRemove();
+        },
+        onError: (e) => {
+          console.log("Something went wrong...", e.message);
+        },
+      },
+    );
   };
 
   return (
@@ -52,7 +73,7 @@ const ContactListItem = ({ contact }: ContactListItemProps) => {
           onClick={toggleModal}
         />
       </div>
-      <Modal isOpen={isModalOpen} />
+      <Modal isOpen={isModalOpen} onRemove={handleRemoveContact} />
     </div>
   );
 };
