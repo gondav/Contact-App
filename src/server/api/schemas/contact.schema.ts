@@ -13,5 +13,16 @@ export const createContactSchema = object({
   imageUrl: string(),
 });
 
+export const updateContactSchema = object({
+  params,
+  body: object({
+    name: string(),
+    phoneNumber: string(),
+    email: string(),
+    imageUrl: string(),
+  }).partial(),
+});
+
 export type ParamsInput = TypeOf<typeof params>;
 export type CreateContactInput = TypeOf<typeof createContactSchema>;
+export type UpdateContactInput = TypeOf<typeof updateContactSchema>;
