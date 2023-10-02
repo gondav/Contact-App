@@ -1,6 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import { deleteContact, findAllContacts } from "../services/contact.service";
-import { ParamsInput } from "../schemas/contact.schema";
+import {
+  createContact,
+  deleteContact,
+  findAllContacts,
+} from "../services/contact.service";
+import { CreateContactInput, ParamsInput } from "../schemas/contact.schema";
 
 export const getContactsHandler = async () => {
   try {
@@ -40,6 +44,30 @@ export const deleteContactHandler = async ({
     return {
       status: "success",
       data: null,
+    };
+  } catch (err: any) {
+    throw err;
+  }
+};
+
+export const createContactHandler = async ({
+  input,
+}: {
+  input: CreateContactInput;
+}) => {
+  try {
+    const newContact = await createContact(input);
+
+    if (!newContact) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Contact creation failed",
+      });
+    }
+
+    return {
+      status: "success",
+      data: newContact,
     };
   } catch (err: any) {
     throw err;
