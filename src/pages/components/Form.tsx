@@ -1,7 +1,7 @@
 import DefaultButton from "./DefaultButton";
 import addSrc from "../../icons/add.png";
 import deleteSrc from "../../icons/delete.png";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { api } from "~/utils/api";
 import { DEFAULT_IMG } from "../utils";
 import { ContactToUpdate } from "..";
@@ -22,12 +22,20 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
   const emailRef = useRef<HTMLInputElement>(null);
 
   const { id, ...rest } = contactToUpdate;
-  const contact = { ...rest, imageUrl: rest.imageUrl || "" };
+  const [contact, setContact] = useState({
+    ...rest,
+    imageUrl: rest.imageUrl || "",
+  });
 
   const submitForm = () => {
     if (formatType === "POST") {
+      setContact({
+        name: "",
+        phoneNumber: "",
+        email: "",
+        imageUrl: "",
+      });
       createContactMutation.mutate(contact, {
-        onSuccess: () => console.log("Contact added, yeaaaah...."),
         onError: (e) =>
           console.log("Something happened, could not save contact", e.message),
       });
@@ -40,7 +48,6 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
           body: contact,
         },
         {
-          onSuccess: () => console.log("Contact updated, yeaaaah...."),
           onError: (e) =>
             console.log(
               "Something happened, could not update contact",
