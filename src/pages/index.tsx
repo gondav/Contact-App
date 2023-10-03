@@ -42,7 +42,8 @@ export default function Home() {
     setIsFormOpen(true);
   };
 
-  const openForm = () => {
+  const openFormToAddContact = () => {
+    setFormatType("POST");
     setIsFormOpen(true);
   };
 
@@ -52,7 +53,7 @@ export default function Home() {
 
   return (
     <>
-      <Header onClick={openForm} />
+      <Header onClick={openFormToAddContact} />
       {isFormOpen && (
         <div className="overlay flex justify-center">
           <Form
