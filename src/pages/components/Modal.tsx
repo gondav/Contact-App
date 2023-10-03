@@ -6,9 +6,10 @@ interface ModalProps {
   isOpen: boolean;
   onRemove: () => void;
   onEdit: () => void;
+  onClose: () => void;
 }
 
-const Modal = ({ isOpen, onRemove, onEdit }: ModalProps) => {
+const Modal = ({ isOpen, onRemove, onEdit, onClose }: ModalProps) => {
   if (!isOpen) return null;
 
   const listItemList = [
@@ -43,6 +44,7 @@ const Modal = ({ isOpen, onRemove, onEdit }: ModalProps) => {
               onClick={() => {
                 listItem.name === "Remove" ? handleRemoveClick() : undefined;
                 listItem.name === "Edit" ? handleEditClick() : undefined;
+                onClose();
               }}
               key={i}
               className="flex w-full cursor-pointer px-2.5 py-3 hover:bg-customGrey-70"

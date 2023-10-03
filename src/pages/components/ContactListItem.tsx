@@ -35,6 +35,10 @@ const ContactListItem = ({
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   const deleteContactMutation = api.contact.delete.useMutation();
 
   const handleRemoveContact = () => {
@@ -80,6 +84,7 @@ const ContactListItem = ({
         isOpen={isModalOpen}
         onRemove={handleRemoveContact}
         onEdit={onContactEdit}
+        onClose={handleModalClose}
       />
     </div>
   );
