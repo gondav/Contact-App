@@ -52,15 +52,10 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
   };
 
   const createContactObject = () => {
-    if (nameRef.current) {
-      contact.name = nameRef.current.value;
-    }
-    if (phoneRef.current) {
-      contact.phoneNumber = phoneRef.current.value;
-    }
-    if (emailRef.current) {
-      contact.email = emailRef.current.value;
-    }
+    contact.name = nameRef.current?.value || contactToUpdate.name;
+    contact.phoneNumber =
+      phoneRef?.current?.value || contactToUpdate.phoneNumber;
+    contact.email = emailRef.current?.value || contactToUpdate.email;
     contact.imageUrl = "";
 
     submitForm();
@@ -91,7 +86,11 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
             </label>
             <input
               ref={nameRef}
-              className="input-field"
+              className={`input-field ${
+                contact.name === ""
+                  ? "placeholder-opacity-[0.32]"
+                  : "placeholder-white"
+              }`}
               type="text"
               id="name"
               placeholder={contact.name || "Jamie Wright"}
@@ -106,7 +105,11 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
             </label>
             <input
               ref={phoneRef}
-              className="input-field"
+              className={`input-field ${
+                contact.phoneNumber === ""
+                  ? "placeholder-opacity-[0.32]"
+                  : "placeholder-white"
+              }`}
               type="text"
               id="phoneNumber"
               placeholder={contact.phoneNumber || "+01 234 5678"}
@@ -121,7 +124,11 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
             </label>
             <input
               ref={emailRef}
-              className="input-field"
+              className={`input-field ${
+                contact.email === ""
+                  ? "placeholder-opacity-[0.32]"
+                  : "placeholder-white"
+              }`}
               type="text"
               id="email"
               placeholder={contact.email || "jamie.wright@mail.com"}

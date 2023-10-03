@@ -101,7 +101,7 @@ p,
 }
 
 .input-field {
-  @apply rounded-lg  border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white placeholder-white placeholder-opacity-[0.32] focus:outline-none focus-visible:ring-0;
+  @apply rounded-lg  border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white  focus:outline-none focus-visible:ring-0;
 }
 
 .overlay {
