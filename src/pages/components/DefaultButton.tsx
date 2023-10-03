@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 interface DefaultButtonProps {
   iconSrc?: string;
   label?: string;
@@ -13,10 +15,11 @@ const DefaultButton = ({
 }: DefaultButtonProps) => {
   return (
     <button
+      type="button"
       onClick={onClick}
       className={`${className} ${
-        !label && iconSrc ? "h-10 w-10" : "px-4 py-[11px]"
-      } rounded-lg`}
+        !label && iconSrc ? "w-10" : "px-4 "
+      } h-10 rounded-lg `}
     >
       <div className=" flex items-center justify-center">
         {iconSrc && (
