@@ -1,0 +1,118 @@
+@import "./fonts.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  font-family: "Glysa", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  letter-spacing: 0;
+  color: #fff;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+h2 {
+  font-family: "Glysa", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+h3 {
+  font-family: "LexendDeca", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01;
+  color: #fff;
+}
+
+p,
+.body {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01;
+  color: #fff;
+}
+
+.message {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.01;
+  color: #ffffff8c;
+}
+
+.btn-prio {
+  @apply bg-customGrey-60;
+
+  &:hover {
+    @apply bg-customGrey-50;
+  }
+
+  &:active {
+    @apply bg-customGrey-40;
+  }
+}
+
+.btn-primary {
+  @apply bg-customGrey-60;
+
+  &:hover {
+    @apply bg-customGrey-50;
+  }
+
+  &:active {
+    @apply bg-customGrey-40;
+  }
+}
+
+.btn-secondary {
+  @apply bg-customGrey-100;
+
+  &:hover {
+    @apply bg-customGrey-90;
+  }
+
+  &:active {
+    @apply bg-customGrey-80;
+  }
+}
+
+.modal {
+  @apply rounded-lg bg-customGrey-80;
+  transform: translate(0, calc(100%));
+  z-index: 2;
+
+  @media screen and (min-width: 1280px) {
+    transform: translate(calc(100% - 40px), calc(100% - 8px));
+  }
+}
+
+.input-field {
+  @apply rounded-lg text-sm border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white  focus:outline-none focus-visible:ring-0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.form-overlay {
+  background: rgba(#232323, 0.4);
+}
