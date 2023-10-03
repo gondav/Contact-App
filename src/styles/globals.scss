@@ -101,15 +101,18 @@ p,
 }
 
 .input-field {
-  @apply rounded-lg  border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white  focus:outline-none focus-visible:ring-0;
+  @apply rounded-lg text-sm border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white  focus:outline-none focus-visible:ring-0;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+.form-overlay {
+  background: rgba(#232323, 0.4);
 }
