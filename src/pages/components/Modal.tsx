@@ -5,9 +5,10 @@ import removeSrc from "../../icons/delete.png";
 interface ModalProps {
   isOpen: boolean;
   onRemove: () => void;
+  onEdit: () => void;
 }
 
-const Modal = ({ isOpen, onRemove }: ModalProps) => {
+const Modal = ({ isOpen, onRemove, onEdit }: ModalProps) => {
   if (!isOpen) return null;
 
   const listItemList = [
@@ -29,15 +30,20 @@ const Modal = ({ isOpen, onRemove }: ModalProps) => {
     onRemove();
   };
 
+  const handleEditClick = () => {
+    onEdit();
+  };
+
   return (
     <div className="modal absolute  bottom-0 right-0 flex ">
       <ul className="w-[219px]">
         {listItemList.map((listItem, i) => {
           return (
             <li
-              onClick={
-                listItem.name === "Remove" ? handleRemoveClick : undefined
-              }
+              onClick={() => {
+                listItem.name === "Remove" ? handleRemoveClick() : undefined;
+                listItem.name === "Edit" ? handleEditClick() : undefined;
+              }}
               key={i}
               className="flex w-full cursor-pointer px-2.5 py-3 hover:bg-customGrey-70"
             >
