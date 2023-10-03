@@ -70,7 +70,7 @@ const Form = ({ formatType, contactToUpdate, onClose }: FormProps) => {
 
   return (
     <div className="rounded-lg bg-customGrey-100   sm:w-[364px]">
-      <div className="form-overlay p-6">
+      <div className="form-overlay rounded-lg p-6">
         <h2 className="mb-6">{heading}</h2>
         <form>
           <div className="form-wrapper ">
