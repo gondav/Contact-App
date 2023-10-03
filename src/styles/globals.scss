@@ -23,6 +23,7 @@ h2 {
   font-size: 24px;
   line-height: 40px;
   letter-spacing: 0;
+  color: #fff;
 }
 
 h3 {
@@ -54,14 +55,14 @@ p,
 }
 
 .btn-prio {
-  @apply border-customGrey-50 bg-customGrey-60;
+  @apply bg-customGrey-60;
 
   &:hover {
-    @apply border-customGrey-50 bg-customGrey-50;
+    @apply bg-customGrey-50;
   }
 
   &:active {
-    @apply border-customGrey-50 bg-customGrey-40;
+    @apply bg-customGrey-40;
   }
 }
 
@@ -97,4 +98,18 @@ p,
   @media screen and (min-width: 1280px) {
     transform: translate(calc(100% - 40px), calc(100% - 8px));
   }
+}
+
+.input-field {
+  @apply rounded-lg  border-customGrey-80 bg-gradient-to-r from-customGrey-60 via-customGrey-60 to-customGrey-60 px-3 py-[11px] text-white placeholder-white placeholder-opacity-[0.32] focus:outline-none focus-visible:ring-0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
