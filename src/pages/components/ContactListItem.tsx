@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import DefaultButton from "./DefaultButton";
 import { useState } from "react";
 import { api } from "~/utils/api";
+import { DEFAULT_IMG } from "../utils";
 
 interface Contact {
   id: number;
@@ -17,12 +18,16 @@ interface Contact {
 interface ContactListItemProps {
   contact: Contact;
   onRemove: () => void;
+  onContactEdit: () => void;
 }
 
-const ContactListItem = ({ contact, onRemove }: ContactListItemProps) => {
+const ContactListItem = ({
+  contact,
+  onRemove,
+  onContactEdit,
+}: ContactListItemProps) => {
   const { name, phoneNumber, imageUrl } = contact || {};
-  const defaultImageSrc =
-    "https://ux-contact-profile-pictures.s3.eu-north-1.amazonaws.com/Default.png";
+  const imageSrc = imageUrl || DEFAULT_IMG;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -54,7 +59,7 @@ const ContactListItem = ({ contact, onRemove }: ContactListItemProps) => {
       <div className="contact-left flex items-center py-3 ">
         <img
           className="mr-4 h-10 w-10 rounded-full border border-customGrey-60 object-cover"
-          src={imageUrl ?? defaultImageSrc}
+          src={imageSrc}
           alt="Contact picture"
         />
         <div className="contact-info flex  flex-col justify-between">
@@ -71,7 +76,11 @@ const ContactListItem = ({ contact, onRemove }: ContactListItemProps) => {
           onClick={toggleModal}
         />
       </div>
-      <Modal isOpen={isModalOpen} onRemove={handleRemoveContact} />
+      <Modal
+        isOpen={isModalOpen}
+        onRemove={handleRemoveContact}
+        onEdit={onContactEdit}
+      />
     </div>
   );
 };
