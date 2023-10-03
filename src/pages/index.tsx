@@ -25,7 +25,7 @@ export default function Home() {
     imageUrl: "",
   });
 
-  const handleContactRemove = () => {
+  const handleFetch = () => {
     refetch();
   };
 
@@ -71,7 +71,7 @@ export default function Home() {
               <ContactListItem
                 key={i}
                 contact={contact}
-                onRemove={handleContactRemove}
+                onRemove={handleFetch}
                 onContactEdit={() => handleContactEdit(contact.id)}
               />
             ))}
