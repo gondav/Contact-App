@@ -4,7 +4,11 @@ import lightModeSrc from "../../icons/light-mode.png";
 import addSrc from "../../icons/add.png";
 import profilePicSrc from "../../icons/profile-pic.png";
 
-const Header = () => {
+interface HeaderProps {
+  onClick: () => void;
+}
+
+const Header = ({ onClick }: HeaderProps) => {
   return (
     <header>
       <div className="h-14 border-b border-customGrey-60 md:h-24 ">
@@ -27,7 +31,10 @@ const Header = () => {
                   src={profilePicSrc.src}
                   alt="Profile picture"
                 />
-                <button className="btn-prio flex items-center rounded-3xl bg-customGrey-60 px-3 py-2">
+                <button
+                  onClick={onClick}
+                  className="btn-prio flex items-center rounded-3xl bg-customGrey-60 px-3 py-2"
+                >
                   <img className=" md:mr-3" src={addSrc.src} alt="Add" />
                   <span className="hidden text-white md:block">Add new</span>
                 </button>
